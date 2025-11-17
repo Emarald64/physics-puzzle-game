@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bihjy0xd6undo"]
+
+[ext_resource type="Texture2D" uid="uid://bwcoc7ff12128" path="res://assets/spritesheet_wood.png" id="1_7fut1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_524ei"]
+atlas = ExtResource("1_7fut1")
+region = Rect2(500, 140, 140, 140)
+filter_clip = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi7hx"]
+size = Vector2(140, 140)
+
+[node name="Block" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_524ei")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qi7hx")
