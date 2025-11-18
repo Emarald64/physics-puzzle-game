@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0ywaitxosxkn"]
+
+[ext_resource type="Texture2D" uid="uid://fhputi8i1yn7" path="res://assets/grass.png" id="1_o5qli"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
+size = Vector2(560, 70)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sgp6g"]
+distance = -550.0
+
+[node name="main" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(576, 613)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture_repeat = 2
+texture = ExtResource("1_o5qli")
+region_enabled = true
+region_rect = Rect2(0, 0, 560, 70)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_o5qli")
+metadata/_edit_lock_ = true
+
+[node name="Fail" type="Area2D" parent="."]
+position = Vector2(0, 29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fail"]
+shape = SubResource("WorldBoundaryShape2D_sgp6g")
+
+[node name="Line2D" type="Line2D" parent="Fail"]
+points = PackedVector2Array(0, 550, 1152, 550)
+width = 2.0
+default_color = Color(1, 0, 0, 1)

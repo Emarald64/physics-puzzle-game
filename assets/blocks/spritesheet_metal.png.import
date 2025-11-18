@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc6wvcoj45usg"
-path="res://.godot/imported/spritesheet_explosive.png-22724e59858e1cc0d382360444e49934.ctex"
+uid="uid://dayb6tmgxskay"
+path="res://.godot/imported/spritesheet_metal.png-3d71411c42eef31fb2f8bc2a9e92805e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheet_explosive.png"
-dest_files=["res://.godot/imported/spritesheet_explosive.png-22724e59858e1cc0d382360444e49934.ctex"]
+source_file="res://assets/blocks/spritesheet_metal.png"
+dest_files=["res://.godot/imported/spritesheet_metal.png-3d71411c42eef31fb2f8bc2a9e92805e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dayb6tmgxskay"
-path="res://.godot/imported/spritesheet_metal.png-a8719d81e6d4e2b7f8ad2c92ec47ce07.ctex"
+uid="uid://fhputi8i1yn7"
+path="res://.godot/imported/grass.png-a207bda4a53e32c7645a41ec6d1c234e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheet_metal.png"
-dest_files=["res://.godot/imported/spritesheet_metal.png-a8719d81e6d4e2b7f8ad2c92ec47ce07.ctex"]
+source_file="res://assets/grass.png"
+dest_files=["res://.godot/imported/grass.png-a207bda4a53e32c7645a41ec6d1c234e.ctex"]
 
 [params]
 

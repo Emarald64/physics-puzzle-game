@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwcoc7ff12128"
-path="res://.godot/imported/spritesheet_wood.png-26d6134234fa67897473e03a45fb05a8.ctex"
+uid="uid://skdp4au1th66"
+path="res://.godot/imported/spritesheet_stone.png-a6b4bb06a76825a99358f42d2c4e3607.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheet_wood.png"
-dest_files=["res://.godot/imported/spritesheet_wood.png-26d6134234fa67897473e03a45fb05a8.ctex"]
+source_file="res://assets/blocks/spritesheet_stone.png"
+dest_files=["res://.godot/imported/spritesheet_stone.png-a6b4bb06a76825a99358f42d2c4e3607.ctex"]
 
 [params]
 
