@@ -1,36 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0ywaitxosxkn"]
+[gd_scene load_steps=3 format=3 uid="uid://c0ywaitxosxkn"]
 
-[ext_resource type="Texture2D" uid="uid://fhputi8i1yn7" path="res://assets/grass.png" id="1_o5qli"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
-size = Vector2(560, 70)
+[ext_resource type="Script" uid="uid://dof1a53xi077g" path="res://scenes/main.gd" id="1_0wfyh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sgp6g"]
-distance = -550.0
+distance = -600.0
 
 [node name="main" type="Node2D"]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(576, 613)
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture_repeat = 2
-texture = ExtResource("1_o5qli")
-region_enabled = true
-region_rect = Rect2(0, 0, 560, 70)
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_o5qli")
-metadata/_edit_lock_ = true
+script = ExtResource("1_0wfyh")
 
 [node name="Fail" type="Area2D" parent="."]
 position = Vector2(0, 29)
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fail"]
 shape = SubResource("WorldBoundaryShape2D_sgp6g")
 
 [node name="Line2D" type="Line2D" parent="Fail"]
-points = PackedVector2Array(0, 550, 1152, 550)
+points = PackedVector2Array(0, 600, 1152, 600)
 width = 2.0
 default_color = Color(1, 0, 0, 1)
+
+[node name="Start" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 48
+text = "Start"
+
+[connection signal="area_entered" from="Fail" to="." method="fail" unbinds=1]
+[connection signal="pressed" from="Start" to="." method="startLevel"]
