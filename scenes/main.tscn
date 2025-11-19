@@ -29,5 +29,20 @@ offset_bottom = 8.0
 theme_override_font_sizes/font_size = 48
 text = "Start"
 
+[node name="WinCountdownTimer" type="Timer" parent="."]
+
+[node name="Count Down" type="Label" parent="."]
+z_index = 10
+offset_left = 503.5
+offset_top = 149.5
+offset_right = 649.5
+offset_bottom = 498.5
+pivot_offset = Vector2(73, 174.5)
+theme_override_font_sizes/font_size = 256
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="area_entered" from="Fail" to="." method="fail" unbinds=1]
 [connection signal="pressed" from="Start" to="." method="startLevel"]
+[connection signal="timeout" from="WinCountdownTimer" to="." method="decWinCounter"]
