@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3s16vj5upgy0"]
+
+[ext_resource type="PackedScene" uid="uid://bihjy0xd6undo" path="res://scenes/blocks/block.tscn" id="1_b157a"]
+[ext_resource type="Texture2D" uid="uid://bwcoc7ff12128" path="res://assets/blocks/spritesheet_wood.png" id="2_r1bl1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5xjw"]
+atlas = ExtResource("2_r1bl1")
+region = Rect2(0, 70, 219, 70)
+filter_clip = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hj4qh"]
+size = Vector2(220, 72)
+
+[node name="Long Block" instance=ExtResource("1_b157a")]
+mass = 3.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_f5xjw")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_hj4qh")
+
+[node name="CollisionShape2D" parent="Overlapping Blocks Check" index="0"]
+shape = SubResource("RectangleShape2D_hj4qh")

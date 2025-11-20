@@ -2,7 +2,7 @@ extends Node2D
 
 var currentLevelNumber:=0
 var level:Node
-const levels:Array[PackedScene]=[preload("res://scenes/levels/base_level.tscn")]
+const levels:Array[PackedScene]=[preload("res://scenes/levels/level_1.tscn"),preload("res://scenes/levels/level_2.tscn")]
 
 var secondsUntilWin:=6
 
@@ -22,6 +22,7 @@ func loadLevel(number:int)->void:
 	add_child(level)
 	secondsUntilWin=6
 	$"Count Down".hide()
+	$Fail.monitoring=false
 
 func startLevel()->void:
 	# check that no blocks overlap
@@ -29,7 +30,7 @@ func startLevel()->void:
 	var blocks:Array=level.get_node('Blocks').get_children()
 	print(len(blocks))
 	for block in blocks:
-		if block.global_position.y>=500 or block.get_node('Overlapping Blocks Check').has_overlapping_areas():
+		if block.get_node('Overlapping Blocks Check').has_overlapping_areas():
 			block.modulate=Color.RED
 			get_tree().create_timer(1).timeout.connect(block.set_modulate.bind(Color.WHITE))
 			return
@@ -45,7 +46,6 @@ func startLevel()->void:
 	decWinCounter()
 
 func decWinCounter()->void:
-	print('counted down')
 	secondsUntilWin-=1
 	if secondsUntilWin<=0:
 		$WinCountdownTimer.stop()

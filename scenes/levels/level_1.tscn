@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://ndfg1ym25fy3"]
+
+[ext_resource type="PackedScene" uid="uid://bihjy0xd6undo" path="res://scenes/blocks/block.tscn" id="1_6iamk"]
+[ext_resource type="Texture2D" uid="uid://fhputi8i1yn7" path="res://assets/grass.png" id="2_nsrm0"]
+[ext_resource type="PackedScene" uid="uid://b3s16vj5upgy0" path="res://scenes/blocks/long_block.tscn" id="2_x42e6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukglk"]
+size = Vector2(140, 70)
+
+[node name="level1" type="Node2D"]
+
+[node name="Blocks" type="Node2D" parent="."]
+
+[node name="Block2" parent="Blocks" instance=ExtResource("1_6iamk")]
+position = Vector2(586, 138)
+
+[node name="Long Block" parent="Blocks" instance=ExtResource("2_x42e6")]
+position = Vector2(328, 333)
+draggable = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(430, 613)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture_repeat = 2
+texture = ExtResource("2_nsrm0")
+region_enabled = true
+region_rect = Rect2(0, 0, 140, 70)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ukglk")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(745, 613)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+texture_repeat = 2
+texture = ExtResource("2_nsrm0")
+region_enabled = true
+region_rect = Rect2(0, 0, 140, 70)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_ukglk")
+metadata/_edit_lock_ = true
