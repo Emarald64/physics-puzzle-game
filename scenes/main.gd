@@ -11,7 +11,13 @@ func _ready() -> void:
 
 func fail() -> void:
 	$WinCountdownTimer.stop()
-	call_deferred('loadLevel',currentLevelNumber)
+	$Fail.set_deferred('monitoring',false)
+	
+	for block in level.get_node('Blocks').get_children():
+		block.reset()
+	
+	secondsUntilWin=6
+	$"Count Down".hide()
 
 func loadLevel(number:int)->void:
 	if level!=null:
@@ -28,7 +34,7 @@ func startLevel()->void:
 	# check that no blocks overlap
 	print('starting level')
 	var blocks:Array=level.get_node('Blocks').get_children()
-	print(len(blocks))
+	#print(len(blocks))
 	for block in blocks:
 		if block.get_node('Overlapping Blocks Check').has_overlapping_areas():
 			block.modulate=Color.RED
@@ -37,10 +43,7 @@ func startLevel()->void:
 	print('checks passed')
 	for block in blocks:
 		assert(block is RigidBody2D)
-		block.modulate=Color.WHITE
-		block.draggable=false
-		block.freeze=false
-		block.sleeping=false
+		block.activate()
 	$Fail.monitoring=true
 	$WinCountdownTimer.start()
 	decWinCounter()
