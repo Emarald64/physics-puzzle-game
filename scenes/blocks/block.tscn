@@ -27,7 +27,7 @@ shape = SubResource("RectangleShape2D_qi7hx")
 
 [node name="Overlapping Blocks Check" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Overlapping Blocks Check"]
 shape = SubResource("RectangleShape2D_qi7hx")

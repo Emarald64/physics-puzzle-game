@@ -6,6 +6,9 @@ const levels:Array[PackedScene]=[preload("res://scenes/levels/level_1.tscn"),pre
 
 var secondsUntilWin:=6
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("debug 1"):win()
+
 func _ready() -> void:
 	loadLevel(0)
 
@@ -25,6 +28,7 @@ func loadLevel(number:int)->void:
 		level.queue_free()
 	# add the new level
 	level=levels[number].instantiate()
+	level.z_index=-1
 	add_child(level)
 	secondsUntilWin=6
 	$"Count Down".hide()
@@ -33,10 +37,10 @@ func loadLevel(number:int)->void:
 func startLevel()->void:
 	# check that no blocks overlap
 	print('starting level')
-	var blocks:Array=level.get_node('Blocks').get_children()
+	var blocks:=level.get_node('Blocks').get_children()
 	#print(len(blocks))
 	for block in blocks:
-		if block.get_node('Overlapping Blocks Check').has_overlapping_areas():
+		if block.get_node('Overlapping Blocks Check').has_overlapping_areas() or block.get_node('Overlapping Blocks Check').has_overlapping_bodies():
 			block.modulate=Color.RED
 			get_tree().create_timer(1).timeout.connect(block.set_modulate.bind(Color.WHITE))
 			return

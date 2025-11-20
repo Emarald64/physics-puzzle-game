@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3q7v3mk7kb47"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h361b"]
+size = Vector2(70, 70)
+
+[node name="Movable block stopper" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0.4666667, 0, 0.2509804)
+polygon = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_h361b")

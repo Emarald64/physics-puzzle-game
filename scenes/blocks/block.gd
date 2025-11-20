@@ -10,6 +10,14 @@ var active:=false
 func _ready() -> void:
 	if not draggable:
 		modulate=Color.GRAY
+		$"Overlapping Blocks Check".set_collision_mask_value(3,false)
+
+func _draw()->void:
+	if draggable and not active:
+		if $CollisionShape2D.shape is RectangleShape2D:
+			var shape_size=$CollisionShape2D.shape.size+Vector2.ONE*2
+			draw_rect(Rect2(-shape_size/2,shape_size),Color.SKY_BLUE,false,2,false)
+			
 
 func _process(_delta: float) -> void:
 	if dragging:
@@ -30,6 +38,7 @@ func activate()->void:
 	active=true
 	resetPosition=position
 	resetRotation=rotation
+	queue_redraw()
 
 func reset()->void:
 	#sleeping=true
@@ -39,3 +48,4 @@ func reset()->void:
 	set_deferred('rotation',resetRotation)
 	if not draggable:
 		modulate=Color.GRAY
+	queue_redraw()
