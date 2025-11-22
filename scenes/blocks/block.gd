@@ -4,13 +4,18 @@ var dragging :=false
 var dragOffset:=Vector2.ZERO
 var active:=false
 @export var draggable:=false
+@export var failable:=true
 @onready var resetPosition:=position
 @onready var resetRotation:=rotation
 
 func _ready() -> void:
 	if not draggable:
-		modulate=Color.GRAY
+		$Sprite2D.modulate*=Color.GRAY
 		$"Overlapping Blocks Check".set_collision_mask_value(3,false)
+		
+	if not failable:
+		$Sprite2D.modulate*=Color.ORANGE
+		$"Overlapping Blocks Check".set_collision_layer_value(2,false)
 
 func _draw()->void:
 	if draggable and not active:
@@ -32,7 +37,8 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 		dragging=event.pressed
 
 func activate()->void:
-	modulate=Color.WHITE
+	if not draggable:
+		modulate*=4.0/3
 	freeze=false
 	#sleeping=false
 	active=true
@@ -47,5 +53,5 @@ func reset()->void:
 	set_deferred('position',resetPosition)
 	set_deferred('rotation',resetRotation)
 	if not draggable:
-		modulate=Color.GRAY
+		modulate*=3.0/4
 	queue_redraw()

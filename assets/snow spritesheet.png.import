@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5q3jwpauvyw2"
-path="res://.godot/imported/dirt.png-0a1ee02e0310eb6b032db25fe6920ea9.ctex"
+uid="uid://chbwcj126vk8k"
+path="res://.godot/imported/snow spritesheet.png-2aad760c5d1f2e9887ac65ccf92278ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dirt.png"
-dest_files=["res://.godot/imported/dirt.png-0a1ee02e0310eb6b032db25fe6920ea9.ctex"]
+source_file="res://assets/snow spritesheet.png"
+dest_files=["res://.godot/imported/snow spritesheet.png-2aad760c5d1f2e9887ac65ccf92278ea.ctex"]
 
 [params]
 

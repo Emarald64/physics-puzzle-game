@@ -29,6 +29,8 @@ theme_override_font_sizes/font_size = 48
 text = "Start"
 
 [node name="WinCountdownTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
 [node name="Count Down" type="Label" parent="."]
 z_index = 10
@@ -44,4 +46,4 @@ vertical_alignment = 1
 
 [connection signal="area_entered" from="Fail" to="." method="fail" unbinds=1]
 [connection signal="pressed" from="Start" to="." method="startLevel"]
-[connection signal="timeout" from="WinCountdownTimer" to="." method="decWinCounter"]
+[connection signal="timeout" from="WinCountdownTimer" to="." method="win"]

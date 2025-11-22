@@ -1,25 +1,32 @@
 extends Node2D
 
-var currentLevelNumber:=0
+var currentLevelNumber:=1
 var level:Node
-const levels:Array[PackedScene]=[preload("res://scenes/levels/level_1.tscn"),preload("res://scenes/levels/level_2.tscn")]
+#const levels:Array[PackedScene]=[preload("res://scenes/levels/level_1.tscn"),preload("res://scenes/levels/level_2.tscn"),preload("res://scenes/levels/level_3.tscn")]
+var failedAttempts:=0
 
-var secondsUntilWin:=6
+#var secondsUntilWin:=6
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug 1"):win()
+	if Input.is_action_just_pressed("reset"):fail()
+	if not $WinCountdownTimer.is_stopped():
+		$"Count Down".text=str(int(ceilf($WinCountdownTimer.time_left)))
+		$"Count Down".add_theme_font_size_override("font_size",64+(384*minf(0.5,1-fmod($WinCountdownTimer.time_left,1.0))))
 
 func _ready() -> void:
-	loadLevel(0)
+	loadLevel(1)
 
 func fail() -> void:
+	if $WinCountdownTimer.is_stopped():
+		failedAttempts+=1
 	$WinCountdownTimer.stop()
 	$Fail.set_deferred('monitoring',false)
 	
 	for block in level.get_node('Blocks').get_children():
 		block.reset()
-	
-	secondsUntilWin=6
+	#
+	#secondsUntilWin=6
 	$"Count Down".hide()
 
 func loadLevel(number:int)->void:
@@ -27,10 +34,10 @@ func loadLevel(number:int)->void:
 		# remove existing level
 		level.queue_free()
 	# add the new level
-	level=levels[number].instantiate()
+	level=load("res://scenes/levels/level_"+str(number)+".tscn").instantiate()
 	level.z_index=-1
 	add_child(level)
-	secondsUntilWin=6
+	#secondsUntilWin=6
 	$"Count Down".hide()
 	$Fail.monitoring=false
 
@@ -38,7 +45,6 @@ func startLevel()->void:
 	# check that no blocks overlap
 	print('starting level')
 	var blocks:=level.get_node('Blocks').get_children()
-	#print(len(blocks))
 	for block in blocks:
 		if block.get_node('Overlapping Blocks Check').has_overlapping_areas() or block.get_node('Overlapping Blocks Check').has_overlapping_bodies():
 			block.modulate=Color.RED
@@ -50,19 +56,19 @@ func startLevel()->void:
 		block.activate()
 	$Fail.monitoring=true
 	$WinCountdownTimer.start()
-	decWinCounter()
+	$"Count Down".show()
 
-func decWinCounter()->void:
-	secondsUntilWin-=1
-	if secondsUntilWin<=0:
-		$WinCountdownTimer.stop()
-		win()
-	else:
-		$"Count Down".show()
-		$"Count Down".text=str(secondsUntilWin)
-		$"Count Down".scale=Vector2.ONE/4.0
-		var tween := get_tree().create_tween()
-		tween.tween_property($"Count Down",'scale',Vector2.ONE,0.5)
+#func decWinCounter()->void:
+	#secondsUntilWin-=1
+	#if secondsUntilWin<=0:
+		#$WinCountdownTimer.stop()
+		#win()
+	#else:
+		#$"Count Down".show()
+		#$"Count Down".text=str(secondsUntilWin)
+		#$"Count Down".scale=Vector2.ONE/4.0
+		#var tween := get_tree().create_tween()
+		#tween.tween_property($"Count Down",'scale',Vector2.ONE,0.5)
 
 func win() -> void:
 	currentLevelNumber+=1

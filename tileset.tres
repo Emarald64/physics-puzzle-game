@@ -1,0 +1,49 @@
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://daj80vup4hpr1"]
+
+[ext_resource type="Texture2D" uid="uid://bcj0x6nfjr775" path="res://assets/dirt spritesheet.png" id="1_2urvg"]
+[ext_resource type="Texture2D" uid="uid://chbwcj126vk8k" path="res://assets/snow spritesheet.png" id="2_ej02t"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_14fb3"]
+friction = 0.1
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ljxa"]
+texture = ExtResource("1_2urvg")
+texture_region_size = Vector2i(70, 70)
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(35, -35, 35, 35, -35, 35)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, 35, -35, 35)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
+2:6/0 = 0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p0366"]
+texture = ExtResource("2_ej02t")
+texture_region_size = Vector2i(70, 70)
+4:4/0 = 0
+4:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-35, -35, 35, 35, -35, 35)
+4:3/0 = 0
+4:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(35, -35, 35, 35, -35, 35)
+2:3/0 = 0
+2:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
+1:2/0 = 0
+1:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
+3:4/0 = 0
+3:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
+3:3/0 = 0
+3:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
+
+[resource]
+tile_size = Vector2i(70, 70)
+physics_layer_0/collision_layer = 9
+physics_layer_1/collision_layer = 9
+physics_layer_1/physics_material = SubResource("PhysicsMaterial_14fb3")
+sources/0 = SubResource("TileSetAtlasSource_0ljxa")
+sources/1 = SubResource("TileSetAtlasSource_p0366")
