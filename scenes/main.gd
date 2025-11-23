@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):fail()
 	if not $WinCountdownTimer.is_stopped():
 		$"Count Down".text=str(int(ceilf($WinCountdownTimer.time_left)))
-		$"Count Down".add_theme_font_size_override("font_size",64+(384*minf(0.5,1-fmod($WinCountdownTimer.time_left,1.0))))
+		$"Count Down".add_theme_font_size_override("font_size",64+(384*minf(0.5,1-fmod($WinCountdownTimer.time_left-0.01,1.0))))
 
 func _ready() -> void:
 	loadLevel(1)
@@ -36,6 +36,7 @@ func loadLevel(number:int)->void:
 	# add the new level
 	level=load("res://scenes/levels/level_"+str(number)+".tscn").instantiate()
 	level.z_index=-1
+	$Fail.position.y=level.get_meta("fail_line_offset",630.0)
 	add_child(level)
 	#secondsUntilWin=6
 	$"Count Down".hide()

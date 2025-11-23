@@ -3,13 +3,12 @@
 [ext_resource type="Script" uid="uid://dof1a53xi077g" path="res://scenes/main.gd" id="1_0wfyh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sgp6g"]
-distance = -600.0
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_0wfyh")
 
 [node name="Fail" type="Area2D" parent="."]
-position = Vector2(0, 29)
+position = Vector2(0, 630)
 collision_layer = 2
 collision_mask = 2
 monitoring = false
@@ -18,7 +17,7 @@ monitoring = false
 shape = SubResource("WorldBoundaryShape2D_sgp6g")
 
 [node name="Line2D" type="Line2D" parent="Fail"]
-points = PackedVector2Array(0, 600, 1152, 600)
+points = PackedVector2Array(0, 0, 1152, 0)
 width = 2.0
 default_color = Color(1, 0, 0, 1)
 
