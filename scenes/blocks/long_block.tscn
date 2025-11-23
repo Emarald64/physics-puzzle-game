@@ -18,9 +18,7 @@ mass = 3.0
 texture = SubResource("AtlasTexture_f5xjw")
 
 [node name="CollisionShape2D" parent="." index="1"]
-visible = true
 shape = SubResource("RectangleShape2D_hj4qh")
 
 [node name="CollisionShape2D" parent="Overlapping Blocks Check" index="0"]
-visible = false
 shape = SubResource("RectangleShape2D_hj4qh")

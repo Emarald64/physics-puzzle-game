@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7bqhslodvliw"]
+
+[ext_resource type="PackedScene" uid="uid://bihjy0xd6undo" path="res://scenes/blocks/block.tscn" id="1_klppc"]
+[ext_resource type="Texture2D" uid="uid://bwcoc7ff12128" path="res://assets/blocks/spritesheet_wood.png" id="2_fkjk2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euy6r"]
+atlas = ExtResource("2_fkjk2")
+region = Rect2(640, 650, 70, 70)
+filter_clip = true
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_x80mb"]
+points = PackedVector2Array(-35, -35, 35, 35, -35, 35)
+
+[node name="Slope Block" instance=ExtResource("1_klppc")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_euy6r")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape2D_x80mb")
+
+[node name="CollisionShape2D" parent="Overlapping Blocks Check" index="0"]
+shape = SubResource("ConvexPolygonShape2D_x80mb")

@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://064bigqwu5dh"]
+[gd_scene load_steps=5 format=3 uid="uid://064bigqwu5dh"]
 
 [ext_resource type="TileSet" uid="uid://daj80vup4hpr1" path="res://tileset.tres" id="1_0ljxa"]
+[ext_resource type="PackedScene" uid="uid://clbbo4uicv1mf" path="res://scenes/blocks/small_block.tscn" id="3_0ljxa"]
 [ext_resource type="PackedScene" uid="uid://b3s16vj5upgy0" path="res://scenes/blocks/long_block.tscn" id="3_ftfob"]
-[ext_resource type="PackedScene" uid="uid://355vs6rau1s4" path="res://scenes/blocks/circle_block.tscn" id="4_fmg3e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fiq81"]
 content_margin_left = 10.0
@@ -20,32 +20,59 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[node name="level2" type="Node2D"]
+[node name="level3" type="Node2D"]
+metadata/fail_line_offset = 500.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAPAAkAAAAAAAUAAAAQAAkAAAAAAAUAAAAAAAkAAQABAAIAAAABAAkAAQABAAIAAAACAAkAAQABAAIAAAADAAkAAQABAAIAAAAEAAkAAQABAAIAAAAFAAkAAQABAAIAAAAGAAkAAQABAAIAAAAHAAkAAQABAAIAAAAIAAkAAQABAAIAAAAJAAkAAQABAAIAAAAKAAkAAQABAAIAAAALAAkAAQABAAIAAAAMAAkAAQABAAIAAAAOAAkAAAAAAAUAAAA=")
+tile_map_data = PackedByteArray(0, 0, 7, 0, 9, 0, 0, 0, 4, 0, 3, 0, 0, 0, 8, 0, 9, 0, 0, 0, 4, 0, 3, 0, 0, 0, 9, 0, 9, 0, 0, 0, 4, 0, 3, 0, 0, 0)
 tile_set = ExtResource("1_0ljxa")
 
 [node name="Blocks" type="Node2D" parent="."]
 
 [node name="Long Block" parent="Blocks" instance=ExtResource("3_ftfob")]
-position = Vector2(392, 230)
-draggable = true
+position = Vector2(597, 594)
+physics_material_override = null
 failable = false
 
-[node name="Block" parent="Blocks" instance=ExtResource("4_fmg3e")]
-position = Vector2(1078, 39)
+[node name="Small Block" parent="Blocks" instance=ExtResource("3_0ljxa")]
+position = Vector2(522, 524)
+physics_material_override = null
+failable = false
+
+[node name="Small Block2" parent="Blocks" instance=ExtResource("3_0ljxa")]
+position = Vector2(672, 524)
+physics_material_override = null
+failable = false
+
+[node name="Long Block2" parent="Blocks" instance=ExtResource("3_ftfob")]
+position = Vector2(597, 454)
+physics_material_override = null
+failable = false
+
+[node name="Small Block3" parent="Blocks" instance=ExtResource("3_0ljxa")]
+position = Vector2(522, 384)
+physics_material_override = null
+
+[node name="Long Block3" parent="Blocks" instance=ExtResource("3_ftfob")]
+position = Vector2(597, 314)
+physics_material_override = null
+
+[node name="Long Block4" parent="Blocks" instance=ExtResource("3_ftfob")]
+position = Vector2(597, 244)
+physics_material_override = null
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_left = 18.0
-offset_top = 445.0
-offset_right = 583.0
-offset_bottom = 582.0
+offset_left = 762.0
+offset_top = 18.0
+offset_right = 1124.0
+offset_bottom = 179.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fiq81")
 
 [node name="Label" type="Label" parent="PanelContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Orange blocks don't fail
-the level when they fall"
+theme_override_font_sizes/font_size = 32
+text = "Orange blocks don't
+fail the level when 
+they cross the red line"
 horizontal_alignment = 1
+metadata/_edit_lock_ = true

@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bihjy0xd6undo"]
+[gd_scene load_steps=6 format=3 uid="uid://bihjy0xd6undo"]
 
 [ext_resource type="Texture2D" uid="uid://bwcoc7ff12128" path="res://assets/blocks/spritesheet_wood.png" id="1_7fut1"]
 [ext_resource type="Script" uid="uid://gxceqaajaw8q" path="res://scenes/blocks/block.gd" id="1_524ei"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_524ei"]
+friction = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_524ei"]
 atlas = ExtResource("1_7fut1")
@@ -14,6 +17,7 @@ size = Vector2(140, 140)
 [node name="Block" type="RigidBody2D"]
 input_pickable = true
 mass = 4.0
+physics_material_override = SubResource("PhysicsMaterial_524ei")
 can_sleep = false
 freeze = true
 script = ExtResource("1_524ei")
@@ -26,7 +30,7 @@ visible = false
 shape = SubResource("RectangleShape2D_qi7hx")
 
 [node name="Overlapping Blocks Check" type="Area2D" parent="."]
-collision_layer = 10
+collision_layer = 6
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Overlapping Blocks Check"]
