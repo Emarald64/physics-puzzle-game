@@ -31,35 +31,33 @@ tile_set = ExtResource("1_0ljxa")
 
 [node name="Long Block" parent="Blocks" instance=ExtResource("3_ftfob")]
 position = Vector2(597, 594)
-physics_material_override = null
 failable = false
 
 [node name="Small Block" parent="Blocks" instance=ExtResource("3_0ljxa")]
-position = Vector2(522, 524)
-physics_material_override = null
+position = Vector2(522, 404)
+failable = false
+
+[node name="Small Block4" parent="Blocks" instance=ExtResource("3_0ljxa")]
+position = Vector2(672, 221)
 failable = false
 
 [node name="Small Block2" parent="Blocks" instance=ExtResource("3_0ljxa")]
-position = Vector2(672, 524)
-physics_material_override = null
+position = Vector2(1033, 270)
+draggable = true
 failable = false
 
 [node name="Long Block2" parent="Blocks" instance=ExtResource("3_ftfob")]
-position = Vector2(597, 454)
-physics_material_override = null
-failable = false
+position = Vector2(597, 334)
 
 [node name="Small Block3" parent="Blocks" instance=ExtResource("3_0ljxa")]
-position = Vector2(522, 384)
-physics_material_override = null
+position = Vector2(906, 265)
+draggable = true
 
 [node name="Long Block3" parent="Blocks" instance=ExtResource("3_ftfob")]
-position = Vector2(597, 314)
-physics_material_override = null
+position = Vector2(597, 120)
 
 [node name="Long Block4" parent="Blocks" instance=ExtResource("3_ftfob")]
-position = Vector2(597, 244)
-physics_material_override = null
+position = Vector2(597, 50)
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_left = 762.0
