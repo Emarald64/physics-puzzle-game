@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0ywaitxosxkn"]
+[gd_scene load_steps=17 format=3 uid="uid://c0ywaitxosxkn"]
 
 [ext_resource type="Script" uid="uid://dof1a53xi077g" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://dlx21gnikvxrp" path="res://assets/background/hills1.png" id="2_0wfyh"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://dpe3nk7d0exv0" path="res://assets/background/tree02.png" id="5_85g3d"]
 [ext_resource type="Texture2D" uid="uid://bis4lq7inquq" path="res://assets/background/grass5.png" id="5_tipki"]
 [ext_resource type="Texture2D" uid="uid://cskwtgj8387pk" path="res://assets/background/tree20.png" id="6_85g3d"]
+[ext_resource type="Script" uid="uid://cfohm870avcmv" path="res://scenes/moving-clouds.gd" id="9_choun"]
+[ext_resource type="Texture2D" uid="uid://bgoecade0fqwa" path="res://assets/background/cloud1.png" id="10_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://dtlylmaiypaj3" path="res://assets/background/cloud4.png" id="11_trceg"]
+[ext_resource type="Texture2D" uid="uid://db1urdgqoruyh" path="res://assets/background/cloud6.png" id="12_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://chm77hs85kuki" path="res://assets/background/cloud7.png" id="13_jkv2x"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sgp6g"]
 
@@ -104,17 +109,17 @@ texture = ExtResource("4_tipki")
 [node name="Sprite2D3" type="Sprite2D" parent="Background/Hill2"]
 self_modulate = Color(0.72, 0.72, 0.72, 1)
 texture_repeat = 1
-position = Vector2(732, -52)
+position = Vector2(726, -40)
 rotation = 0.2578731
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.375, 0.375)
 texture = ExtResource("5_85g3d")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Background/Hill2"]
 self_modulate = Color(0.72, 0.72, 0.72, 1)
 texture_repeat = 1
-position = Vector2(2092, -14)
+position = Vector2(2092, -28)
 rotation = 0.099873066
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_o6xl0")
 
 [node name="Hill1" type="Sprite2D" parent="Background"]
@@ -163,6 +168,35 @@ position = Vector2(959.0001, -24.999975)
 rotation = -0.22387025
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_85g3d")
+
+[node name="Clouds" type="Node2D" parent="Background"]
+texture_repeat = 2
+script = ExtResource("9_choun")
+
+[node name="Cloud1" type="Sprite2D" parent="Background/Clouds"]
+position = Vector2(217, 30)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_ya4ey")
+
+[node name="Cloud2" type="Sprite2D" parent="Background/Clouds"]
+position = Vector2(409, 154)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_trceg")
+
+[node name="Cloud3" type="Sprite2D" parent="Background/Clouds"]
+position = Vector2(817.5, 63.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_a8y0u")
+
+[node name="Cloud4" type="Sprite2D" parent="Background/Clouds"]
+position = Vector2(1328.5, 151.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_jkv2x")
+
+[node name="Cloud5" type="Sprite2D" parent="Background/Clouds"]
+position = Vector2(1766.5, 72.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_a8y0u")
 
 [connection signal="area_entered" from="Fail" to="." method="fail" unbinds=1]
 [connection signal="pressed" from="Start" to="." method="startLevel"]
