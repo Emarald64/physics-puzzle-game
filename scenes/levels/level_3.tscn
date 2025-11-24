@@ -61,13 +61,14 @@ draggable = true
 position = Vector2(597, 120)
 
 [node name="Long Block4" parent="Blocks" instance=ExtResource("3_ftfob")]
-position = Vector2(597, 50)
+position = Vector2(597, 35)
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_left = 762.0
 offset_top = 18.0
 offset_right = 1124.0
 offset_bottom = 179.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fiq81")
 
 [node name="Label" type="Label" parent="PanelContainer"]

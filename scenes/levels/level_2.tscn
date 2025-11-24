@@ -45,6 +45,7 @@ offset_left = 18.0
 offset_top = 445.0
 offset_right = 583.0
 offset_bottom = 582.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fiq81")
 
 [node name="Label" type="Label" parent="PanelContainer"]
