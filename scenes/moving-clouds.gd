@@ -1,9 +1,18 @@
 extends Node2D
 
-const cloudSpeed:=5
+const cloudLoopSize=2000
+const cloudLoopOffset=500
+const cloudSpeed=5
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _ready() -> void:
+	# Randomize initial cloud position
+	var offset=randf()*cloudLoopSize
 	for cloud in get_children():
 		assert(cloud is Node2D)
-		cloud.position.x=fmod(cloud.position.x+cloudSpeed*delta+500,2000)-500
+		cloud.position.x=fmod(cloud.position.x+offset,2000)
+
+func _process(delta: float) -> void:
+	# Move every cloud every frame
+	for cloud in get_children():
+		assert(cloud is Node2D)
+		cloud.position.x=fmod(cloud.position.x+cloudSpeed*delta+cloudLoopOffset,cloudLoopSize)-cloudLoopOffset

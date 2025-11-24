@@ -4,7 +4,7 @@ var currentLevelNumber:=1
 var level:Node
 #const levels:Array[PackedScene]=[preload("res://scenes/levels/level_1.tscn"),preload("res://scenes/levels/level_2.tscn"),preload("res://scenes/levels/level_3.tscn")]
 var failedAttempts:=0
-
+var blocks:Array[Node]
 #var secondsUntilWin:=6
 
 func _process(_delta: float) -> void:
@@ -35,6 +35,7 @@ func loadLevel(number:int)->void:
 		level.queue_free()
 	# add the new level
 	level=load("res://scenes/levels/level_"+str(number)+".tscn").instantiate()
+	blocks=level.get_node('Blocks').get_children()
 	level.z_index=-1
 	$Fail.position.y=level.get_meta("fail_line_offset",630.0)
 	add_child(level)
@@ -45,7 +46,6 @@ func loadLevel(number:int)->void:
 func startLevel()->void:
 	# check that no blocks overlap
 	print('starting level')
-	var blocks:=level.get_node('Blocks').get_children()
 	for block in blocks:
 		if block.get_node('Overlapping Blocks Check').has_overlapping_areas() or block.get_node('Overlapping Blocks Check').has_overlapping_bodies():
 			block.modulate=Color.RED

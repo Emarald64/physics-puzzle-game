@@ -26,7 +26,6 @@ script = ExtResource("1_524ei")
 texture = SubResource("AtlasTexture_524ei")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_qi7hx")
 
 [node name="Overlapping Blocks Check" type="Area2D" parent="."]
@@ -34,4 +33,5 @@ collision_layer = 6
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Overlapping Blocks Check"]
+visible = false
 shape = SubResource("RectangleShape2D_qi7hx")

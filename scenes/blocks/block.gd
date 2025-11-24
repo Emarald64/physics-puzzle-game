@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+static var currentGrabbedBlockIndex:=-1
 var dragging :=false
 var dragOffset:=Vector2.ZERO
 var active:=false
@@ -31,10 +32,22 @@ func _process(_delta: float) -> void:
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	#print('event')
 	if draggable and not active and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
+		if event.pressed and get_node('/root/main').blocks.find(self)>currentGrabbedBlockIndex:
 			print('clicked')
 			dragOffset=event.position-global_position
-		dragging=event.pressed
+			var myIndex=get_node('/root/main').blocks.find(self)
+			currentGrabbedBlockIndex=myIndex
+			await get_tree().process_frame
+			if currentGrabbedBlockIndex==myIndex:
+				dragging=true
+				get_node('/root/main').blocks.pop_at(myIndex)
+				get_node('/root/main').blocks.append(self)
+				for i in range(len(get_node('/root/main').blocks)):
+					get_node('/root/main').blocks[i].z_index=i+1
+				print(name+" is on top")
+				currentGrabbedBlockIndex=-1
+		else:
+			dragging=false
 
 func activate()->void:
 	if not draggable:
