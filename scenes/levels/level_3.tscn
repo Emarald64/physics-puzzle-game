@@ -53,6 +53,10 @@ position = Vector2(597, 334)
 position = Vector2(906, 265)
 draggable = true
 
+[node name="Small Block5" parent="Blocks" instance=ExtResource("3_0ljxa")]
+position = Vector2(889, 356)
+draggable = true
+
 [node name="Long Block3" parent="Blocks" instance=ExtResource("3_ftfob")]
 position = Vector2(597, 120)
 

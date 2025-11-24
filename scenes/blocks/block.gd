@@ -59,12 +59,12 @@ func activate()->void:
 	resetRotation=rotation
 	queue_redraw()
 
-func reset()->void:
+func reset(resetColor:bool)->void:
 	#sleeping=true
 	active=false
 	set_deferred('freeze',true)
 	set_deferred('position',resetPosition)
 	set_deferred('rotation',resetRotation)
-	if not draggable:
+	if not draggable and resetColor:
 		modulate*=3.0/4
 	queue_redraw()

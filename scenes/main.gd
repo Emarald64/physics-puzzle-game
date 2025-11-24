@@ -18,13 +18,13 @@ func _ready() -> void:
 	loadLevel(1)
 
 func fail() -> void:
-	if $WinCountdownTimer.is_stopped():
+	if not $WinCountdownTimer.is_stopped():
 		failedAttempts+=1
-	$WinCountdownTimer.stop()
 	$Fail.set_deferred('monitoring',false)
 	
 	for block in level.get_node('Blocks').get_children():
-		block.reset()
+		block.reset(not $WinCountdownTimer.is_stopped())
+	$WinCountdownTimer.stop()
 	#
 	#secondsUntilWin=6
 	$"Count Down".hide()
