@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var currentLevelNumber:=1
 var level:Node
@@ -18,30 +18,39 @@ func _ready() -> void:
 	loadLevel(1)
 
 func fail() -> void:
-	if not $WinCountdownTimer.is_stopped():
-		failedAttempts+=1
-	$Fail.set_deferred('monitoring',false)
-	
-	for block in level.get_node('Blocks').get_children():
-		block.reset(not $WinCountdownTimer.is_stopped())
-	$WinCountdownTimer.stop()
-	#
-	#secondsUntilWin=6
-	$"Count Down".hide()
+	if level!=null:
+		if not $WinCountdownTimer.is_stopped():
+			failedAttempts+=1
+		%Fail.set_deferred('monitoring',false)
+		
+		for block in level.get_node('Blocks').get_children():
+			block.reset(not $WinCountdownTimer.is_stopped())
+		$WinCountdownTimer.stop()
+		#
+		#secondsUntilWin=6
+		$"Count Down".hide()
 
 func loadLevel(number:int)->void:
 	if level!=null:
 		# remove existing level
 		level.queue_free()
-	# add the new level
-	level=load("res://scenes/levels/level_"+str(number)+".tscn").instantiate()
-	blocks=level.get_node('Blocks').get_children()
-	level.z_index=-1
-	$Fail.position.y=level.get_meta("fail_line_offset",630.0)
-	add_child(level)
-	#secondsUntilWin=6
+	if number>=5:
+		# Load End Screen
+		blocks.clear()
+		var endScreen=load("res://scenes/end_screen.tscn").instantiate()
+		endScreen.get_node('Attempts').text="Failed Attempts: "+str(failedAttempts)
+		add_child(endScreen)
+		$Fail.hide()
+	else:
+		# add the new level
+		level=load("res://scenes/levels/level_"+str(number)+".tscn").instantiate()
+		blocks=level.get_node('Blocks').get_children()
+		level.z_index=-20
+		%Fail.position.y=level.get_meta("fail_line_offset",630.0)
+		add_child(level)
+		#secondsUntilWin=6
 	$"Count Down".hide()
-	$Fail.monitoring=false
+	%Fail.monitoring=false
 
 func startLevel()->void:
 	# check that no blocks overlap
@@ -55,21 +64,10 @@ func startLevel()->void:
 	for block in blocks:
 		assert(block is RigidBody2D)
 		block.activate()
-	$Fail.monitoring=true
+	%Fail.monitoring=true
 	$WinCountdownTimer.start()
 	$"Count Down".show()
 
-#func decWinCounter()->void:
-	#secondsUntilWin-=1
-	#if secondsUntilWin<=0:
-		#$WinCountdownTimer.stop()
-		#win()
-	#else:
-		#$"Count Down".show()
-		#$"Count Down".text=str(secondsUntilWin)
-		#$"Count Down".scale=Vector2.ONE/4.0
-		#var tween := get_tree().create_tween()
-		#tween.tween_property($"Count Down",'scale',Vector2.ONE,0.5)
 
 func win() -> void:
 	currentLevelNumber+=1
