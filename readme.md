@@ -13,7 +13,7 @@ Made with the Godot Engine
 
 ## To play:
 
-Run the web version or download the desktop builds from the game's page on [itch.io](https://xanderath.itch.io/)
+Run the web version or download the desktop builds from the game's page on [itch.io](https://xanderath.itch.io/physics-puzzle)
 
 or
 
