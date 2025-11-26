@@ -1,6 +1,6 @@
 # Physics Puzzle Game
 
-You are given a framework of blocks that you need to prevent from falling.
+You are given a framework of blocks that you need to made your own additions to to prevent them from falling down. 
 
 Place blocks to prevent any of the blocks from falling below the red line!
 
